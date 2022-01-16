@@ -103,21 +103,21 @@ class MainFragment : BrowseSupportFragment() {
             rowsAdapter.add(ListRow(header, listRowAdapter))
         }
 
-        val gridHeader = HeaderItem(list.size.toLong(), "PREFERENCES")
-
-        val mGridPresenter = GridItemPresenter()
-        val gridRowAdapter = ArrayObjectAdapter(mGridPresenter)
-        gridRowAdapter.add(resources.getString(R.string.grid_view))
-        gridRowAdapter.add(getString(R.string.error_fragment))
-        gridRowAdapter.add(resources.getString(R.string.personal_settings))
-        rowsAdapter.add(ListRow(gridHeader, gridRowAdapter))
+//        val gridHeader = HeaderItem(list.size.toLong(), "PREFERENCES")
+//
+//        val mGridPresenter = GridItemPresenter()
+//        val gridRowAdapter = ArrayObjectAdapter(mGridPresenter)
+//        gridRowAdapter.add(resources.getString(R.string.grid_view))
+//        gridRowAdapter.add(getString(R.string.error_fragment))
+//        gridRowAdapter.add(resources.getString(R.string.personal_settings))
+        //rowsAdapter.add(ListRow(gridHeader, gridRowAdapter))
 
         adapter = rowsAdapter
     }
 
     private fun setupEventListeners() {
         setOnSearchClickedListener {
-            Toast.makeText(context!!, "Implement your own in-app search", Toast.LENGTH_LONG)
+            Toast.makeText(context!!, "Leiting riggar tíverri ikki enn...", Toast.LENGTH_LONG)
                 .show()
         }
 
@@ -134,17 +134,22 @@ class MainFragment : BrowseSupportFragment() {
         ) {
 
             if (item is Video) {
-                Log.d(TAG, "Item: " + item.toString())
-                val intent = Intent(context!!, DetailsActivity::class.java)
-                intent.putExtra(DetailsActivity.MOVIE, item)
+//                Log.d(TAG, "Item: " + item.toString())
+//                val intent = Intent(context!!, DetailsActivity::class.java)
+//                intent.putExtra(DetailsActivity.MOVIE, item)
+//
+//                val bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(
+//                    activity!!,
+//                    (itemViewHolder.view as ImageCardView).mainImageView,
+//                    DetailsActivity.SHARED_ELEMENT_NAME
+//                )
+//                    .toBundle()
+//                startActivity(intent, bundle)
 
-                val bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                    activity!!,
-                    (itemViewHolder.view as ImageCardView).mainImageView,
-                    DetailsActivity.SHARED_ELEMENT_NAME
-                )
-                    .toBundle()
-                startActivity(intent, bundle)
+                val intent = Intent(context!!, PlaybackActivity::class.java)
+                intent.putExtra(DetailsActivity.MOVIE, item)
+                startActivity(intent)
+
             } else if (item is String) {
                 if (item.contains(getString(R.string.error_fragment))) {
                     val intent = Intent(context!!, BrowseErrorActivity::class.java)
