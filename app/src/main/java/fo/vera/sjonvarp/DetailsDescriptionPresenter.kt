@@ -8,7 +8,7 @@ class DetailsDescriptionPresenter : AbstractDetailsDescriptionPresenter() {
         viewHolder: AbstractDetailsDescriptionPresenter.ViewHolder,
         item: Any
     ) {
-        val movie = item as Movie
+        val movie = item as Video
 
         viewHolder.title.text = movie.title
         viewHolder.subtitle.text = movie.studio
